@@ -17,4 +17,3 @@ app.use(errorHandler)
 app.listen(3000, () => {
   console.log(`🚀 🚀 🚀  Server http://localhost on port 3000`);
 })
-

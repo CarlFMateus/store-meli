@@ -1,6 +1,7 @@
-import fetch from 'node-fetch'
-
 import { Router } from 'express'
+
+import { getItemById, getItems } from '../services'
+import { AUTHOR } from '../utils/constants'
 
 const router = Router()
 
@@ -9,20 +10,16 @@ router.get('/', async (req, res, next) => {
   try {
     const { q } = req.query
 
-    const response = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${q}`)
-    const data = await response.json()
-
+    const data = await getItems(q)
+  
     const items = data.results.splice(0, 4)
 
     const categories = data.filters.length > 0
       ? data.filters[0].values[0].path_from_root.map((item) => item.name)
-      : [q]
+      : q ? [q] : []
 
     const dataToSend = {
-      author: {
-        name: 'Carl',
-        lastname: 'Mateus'
-      },
+      author: AUTHOR,
       categories,
       items: items.map((item) => ({
         id: item.id,
@@ -48,36 +45,27 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const { id } = req.params
-
-    const response = await fetch(`https://api.mercadolibre.com/items/${id}`)
-    const responseDescription = await fetch(`https://api.mercadolibre.com/items/${id}/description`)
-
-    const data = await response.json()
-    const dataDescription = await responseDescription.json()
+    const { info, description } = await getItemById(id)
 
     const dataToSend = {
-      author: {
-        name: 'Carl',
-        lastname: 'Mateus'
-      },
+      author: AUTHOR,
       item: {
-        id: data.id,
-        title: data.title,
+        id: info.id,
+        title: info.title,
         price: {
-          amount: data.price,
-          currency: data.currency_id,
-          decimals: data?.decimals || 0
+          amount: info.price,
+          currency: info.currency_id,
+          decimals: info?.decimals || 0
         },
-        picture: data.thumbnail,
-        condition: data.condition,
-        free_shipping: data.shipping.free_shipping,
-        sold_quantity: data.sold_quantity,
-        description: dataDescription.plain_text
+        picture: info.thumbnail,
+        condition: info.condition,
+        free_shipping: info.shipping.free_shipping,
+        sold_quantity: info.sold_quantity,
+        description: description.plain_text
       }
     }    
 
     return res.status(200).json(dataToSend)
-
   } catch (error) {
     next(error)
   }
