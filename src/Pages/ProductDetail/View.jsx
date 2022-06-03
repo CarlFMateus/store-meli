@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import { BreadCrumb, Layout } from '../../Components'
 import { formatCurrency } from '../../utils'
 
@@ -9,6 +10,16 @@ export const View = ({ categories, loading, item }) => {
 
   return (
     <Layout>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>{item.title}</title>
+        <meta name='description' content={item.description} />
+        <meta name='keywords' content={item.title} />
+        <meta name='og:image' content={item.picture} />
+        <meta name='og:title' content={item.title} />
+        <meta name='og:description' content={item.description} />
+      </Helmet>
+
       <BreadCrumb categories={categories} />
 
       <div className={styles.mainContainerDetail}>

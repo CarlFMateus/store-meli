@@ -6,8 +6,8 @@
 
 .mainContainerHeader .containerHeader {
   display: flex;
-  max-width: 63em;
   margin: 0 auto;
+  max-width: 63em;
 }
 
 .mainContainerHeader .containerHeader .logo {
@@ -25,15 +25,19 @@
 
 .mainContainerHeader .containerHeader .formSearch input {
   height: 30px;
-  width: 100%;
   border: none;
   padding-left: 10px;
+  width: 100%;
 }
 
 .mainContainerHeader .containerHeader .formSearch .iconSearch {
   background-color: $gray-1;
-  padding: 5px 10px;
   border: none;
+  padding: 5px 10px;
+}
+
+.mainContainerHeader .containerHeader .formSearch .iconSearch:active {
+  border: 1px solid $gray-1;
 }
 
 .mainContainerHeader .containerHeader .formSearch .iconSearch img {

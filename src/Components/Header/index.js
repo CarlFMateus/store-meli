@@ -21,14 +21,16 @@ export const Header = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    const param = encodeURI(inputSearch)
-    navigate(`/items?search=${param}`)
+    if (inputSearch && inputSearch !== '') {
+      const param = encodeURI(inputSearch)
+      navigate(`/items?search=${param}`)
+    }
   }
 
   return (
-    <View 
-      handleChange={handleChange} 
-      handleSubmit={handleSubmit} 
+    <View
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
       inputSearch={inputSearch}
     />
   )
