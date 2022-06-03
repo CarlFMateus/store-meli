@@ -31,7 +31,10 @@ router.get('/', async (req, res, next) => {
         },
         picture: item.thumbnail,
         condition: item.condition,
-        free_shipping: item.shipping.free_shipping
+        free_shipping: item.shipping.free_shipping,
+        address: {
+          state: item.address.state_name
+        }
       }))
     }
 
@@ -57,7 +60,7 @@ router.get('/:id', async (req, res, next) => {
           currency: info.currency_id,
           decimals: info?.decimals || 0
         },
-        picture: info.thumbnail,
+        picture: info.pictures?.[0]?.secure_url || info.thumbnail,
         condition: info.condition,
         free_shipping: info.shipping.free_shipping,
         sold_quantity: info.sold_quantity,

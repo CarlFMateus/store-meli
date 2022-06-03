@@ -1,0 +1,14 @@
+@import '../../styles/variables.module.scss';
+
+.breadcrumb {
+  // margin: 16px auto;
+  margin: 0 auto;
+  color: $gray-2;
+  max-width: 1000px;
+  padding: 16px 0;
+  font-size: 14px;
+}
+
+.breadcrumb .active {
+  font-weight: 500;
+}

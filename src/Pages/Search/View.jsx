@@ -1,10 +1,21 @@
 import React from 'react'
-import { Layout } from '../../Components/Layout'
+import { BreadCrumb, Items, Layout } from '../../Components'
 
-export const View = ({ param }) => {
+import styles from './styles.module.scss'
+
+export const View = ({ categories, loading, items }) => {
   return (
     <Layout>
-      <div>Search {param}</div>
+      <div className={styles.mainContainerSearch}>
+        {loading && 'Loading ...'}
+
+        {!loading && (
+          <>
+            <BreadCrumb categories={categories} />
+            <Items items={items} />
+          </>
+        )}
+      </div>
     </Layout>
   )
 }

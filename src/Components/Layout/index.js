@@ -1,36 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
-import { View } from './View'
+import { Header } from '../Header'
+import styles from './styles.module.scss'
 
-export const Layout = (props) => {
-  const [inputSearch, setInputSearch] = useState('')
-  const [params] = useSearchParams()
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    const searchParam = params.get('search')
-    if (searchParam) {
-      setInputSearch(searchParam)
-    }
-  }, [params])
-
-  const handleChange = (e) => {
-    setInputSearch(e.target.value)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    const param = encodeURI(inputSearch)
-    navigate(`/items?search=${param}`)
-  }
-
+export const Layout = ({ children }) => {
   return (
-    <View
-      {...props}
-      handleChange={handleChange}
-      inputSearch={inputSearch}
-      handleSubmit={handleSubmit}
-    />
+    <>
+      <Header />
+
+      <div className={styles.mainContainer}>
+        {children}
+      </div>
+    </>
   )
 }

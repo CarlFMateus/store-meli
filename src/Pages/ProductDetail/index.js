@@ -6,7 +6,8 @@ import { View } from './View'
 const initialState = { data: null, loading: true, error: null }
 
 export const ProductDetail = () => {
-  const [{ data }, setInfo] = useState(initialState)
+  const [{ data, loading }, setInfo] = useState(initialState)
+  const [categories, setCategories] = useState([])
   const { id } = useParams()
 
   useEffect(() => {
@@ -14,7 +15,8 @@ export const ProductDetail = () => {
     const consumeService = async () => {
       try {
         const data = await getItem(id)
-        console.log('data', data)
+
+        setCategories([ data.item.id, data.item.title ])
         setInfo({
           data: data.item,
           loading: false,
@@ -32,8 +34,12 @@ export const ProductDetail = () => {
 
     consumeService()
   }, [id])
-  
+
   return (
-    <View param={id} />
+    <View 
+      item={data} 
+      loading={loading} 
+      categories={categories} 
+    />
   )
 }

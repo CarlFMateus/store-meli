@@ -1,0 +1,53 @@
+@import '../../styles/variables.module.scss';
+
+.containerItems {
+  background-color: $white;
+  border-radius: 2px;
+}
+
+.containerItems a {
+  text-decoration: none;
+  color: $black;
+}
+
+.containerItems .cardItem {
+  display: flex;
+  // border-bottom: 1px solid $gray-1;
+  padding: 10px;
+}
+
+.containerItems .cardItem img {
+  width: 180px;
+  height: 180px;
+  border-radius: 4px;
+}
+
+.containerItems .cardItem .infoItem1, .containerItems .cardItem .infoItem2 {
+  padding: 17px 0;
+}
+
+.containerItems .cardItem .infoItem1 {
+  margin-left: 16px;
+  width: 60%;
+}
+
+.containerItems .cardItem .infoItem1 .infoPrice .price {
+  margin-bottom: 32px;
+  font-size: 24px;
+}
+
+.containerItems .cardItem .infoItem1 .infoPrice img {
+  height: 16px;
+  width: 16px;
+  margin-left: 8px;
+}
+
+.containerItems .cardItem .infoItem1 .title {
+  font-size: 18px;
+}
+
+
+.containerItems .cardItem .addressState {
+  font-size: 12px;
+  color: $gray-2;
+}
