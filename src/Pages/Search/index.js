@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { getItems } from '../../Services'
+
+import { getItems } from '../../services'
 import { View } from './View'
 
 const initialState = { data: null, loading: true, error: null }

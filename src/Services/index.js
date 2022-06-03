@@ -1,4 +1,4 @@
-import { mainRoutes } from "./routes"
+import { mainRoutes } from './routes'
 
 export const getItems = (param) => {
   return new Promise(async (resolve, reject) => {

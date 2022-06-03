@@ -1,6 +1,8 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { BreadCrumb, Layout } from '../../Components'
+import PropTypes from 'prop-types';
+
+import { BreadCrumb } from '../../components'
 import { formatCurrency } from '../../utils'
 
 import styles from './styles.module.scss'
@@ -9,7 +11,7 @@ export const View = ({ categories, loading, item }) => {
   if (loading) return 'Loading...'
 
   return (
-    <Layout>
+    <>
       <Helmet>
         <meta charSet='utf-8' />
         <title>{item.title}</title>
@@ -44,6 +46,12 @@ export const View = ({ categories, loading, item }) => {
           <button className={styles.buyButton}>Comprar</button>
         </div>
       </div>
-    </Layout>
+    </>
   )
+}
+
+View.propTypes = {
+  categories: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
+  item: PropTypes.object.isRequired
 }

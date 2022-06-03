@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
-import logo from '../../Assets/Logo_ML.png'
-import search from '../../Assets/ic_Search.png'
+import { routes } from '../../routes'
 
+import logo from '../../assets/Logo_ML.png'
+import search from '../../assets/ic_Search.png'
 import styles from './styles.module.scss'
 
 export const View = ({
@@ -13,7 +15,7 @@ export const View = ({
   return (
     <header className={styles.mainContainerHeader}>
       <div className={styles.containerHeader}>
-        <Link to='/'><img src={logo} className={styles.logo} alt='Mercado Libre' /> </Link>
+        <Link to={routes.home}><img src={logo} className={styles.logo} alt='Mercado Libre' /> </Link>
         <form className={styles.formSearch}>
           <input
             type='text'
@@ -28,4 +30,10 @@ export const View = ({
       </div>
     </header>
   )
+}
+
+View.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  inputSearch: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 }

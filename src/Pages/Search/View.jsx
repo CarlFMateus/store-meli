@@ -1,11 +1,12 @@
 import React from 'react'
-import { BreadCrumb, Items, Layout } from '../../Components'
+import { BreadCrumb, Items } from '../../components'
+import PropTypes from 'prop-types'
 
 import styles from './styles.module.scss'
 
 export const View = ({ categories, loading, items }) => {
   return (
-    <Layout>
+    <>
       <div className={styles.mainContainerSearch}>
         {loading && 'Loading ...'}
 
@@ -16,6 +17,12 @@ export const View = ({ categories, loading, items }) => {
           </>
         )}
       </div>
-    </Layout>
+    </>
   )
+}
+
+View.propTypes = {
+  categories: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
+  items: PropTypes.array.isRequired
 }

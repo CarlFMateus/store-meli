@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getItem } from '../../Services'
+import { getItem } from '../../services'
 import { View } from './View'
 
 const initialState = { data: null, loading: true, error: null }

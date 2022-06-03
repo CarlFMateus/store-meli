@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
+import { routes } from '../../routes'
 import { formatCurrency } from '../../utils'
 
-import shipping from '../../Assets/ic_shipping@2x.png'
+import shipping from '../../assets/ic_shipping@2x.png'
 import styles from './styles.module.scss'
-
 
 export const Items = ({ items }) => {
   return (
@@ -13,7 +14,7 @@ export const Items = ({ items }) => {
       {items.length > 0 ?
         items.map(item => {
           return (
-            <Link to={`/items/${item.id}`} key={`${item.id}`}>
+            <Link to={`${routes.items}/${item.id}`} key={`${item.id}`}>
               <div className={styles.cardItem}>
                 <img src={item.picture} alt={item.title} />
                 <div className={styles.infoItem1}>
@@ -40,4 +41,8 @@ export const Items = ({ items }) => {
       }
     </div>
   )
+}
+
+Items.propTypes = {
+  items: PropTypes.array.isRequired
 }

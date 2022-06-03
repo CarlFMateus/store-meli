@@ -1,8 +1,14 @@
 import React from 'react'
-import { View } from './View'
+
+import logo from '../../assets/logo_meli.png'
+
+import styles from './styles.module.scss'
 
 export const Home = () => {
   return (
-    <View />
+    <div className={styles.homeContainer}>
+      <h1>Bienvenidos a Mercado Libre</h1>
+      <img src={logo} alt='Mercado libre' />
+    </div>
   )
 }

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+
+import { routes } from '../../routes'
 import { View } from './View'
 
 export const Header = () => {
@@ -8,7 +10,7 @@ export const Header = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const searchParam = params.get('search')
+    const searchParam = params.get(routes.params.search)
     if (searchParam) {
       setInputSearch(searchParam)
     }
@@ -23,7 +25,7 @@ export const Header = () => {
 
     if (inputSearch && inputSearch !== '') {
       const param = encodeURI(inputSearch)
-      navigate(`/items?search=${param}`)
+      navigate(`${routes.items}?${routes.params.search}=${param}`)
     }
   }
 
