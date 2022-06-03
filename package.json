@@ -1,5 +1,10 @@
 {
   "name": "store-meli",
+  "description": "Esta plataforma es una prueba para Mercado Libre",
+  "author": {
+    "name": "Carl Mateus",
+    "email": "carl.mateuss@gmail.com"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,7 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "install-all": "npm i && cd api && npm i",
     "api:dev": "cd api && npm run api:dev",
     "api:start": "cd api && npm run api:start",
     "start-all": "run-p start api:start",

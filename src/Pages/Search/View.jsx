@@ -1,5 +1,5 @@
 import React from 'react'
-import { BreadCrumb, Items } from '../../components'
+import { BreadCrumb, Items, Loading } from '../../components'
 import PropTypes from 'prop-types'
 
 import styles from './styles.module.scss'
@@ -8,7 +8,7 @@ export const View = ({ categories, loading, items }) => {
   return (
     <>
       <div className={styles.mainContainerSearch}>
-        {loading && 'Loading ...'}
+        {loading && <Loading />}
 
         {!loading && (
           <>
