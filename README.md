@@ -11,5 +11,5 @@
   5. Luego navegue en la plataforma.
   6. Feliz Revisión 😎🤞.
 
-**Creditos**
+# Creditos
 Este proyecto lo desarrollo Carl Mateus
