@@ -14,6 +14,6 @@ routerApi(app)
 app.use(boomErrorHandler)
 app.use(errorHandler)
 
-app.listen(3000, () => {
-  console.log(`🚀 🚀 🚀  Server http://localhost on port 3000`);
+app.listen(4040, () => {
+  console.log(`🚀 🚀 🚀  Server http://localhost on port 4040`);
 })
