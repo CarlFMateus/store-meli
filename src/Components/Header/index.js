@@ -23,8 +23,10 @@ export const Header = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (inputSearch && inputSearch !== '') {
-      const param = encodeURI(inputSearch)
+    const value = inputSearch.trim()
+
+    if (value && value !== '') {
+      const param = encodeURI(value)
       navigate(`${routes.items}?${routes.params.search}=${param}`)
     }
   }

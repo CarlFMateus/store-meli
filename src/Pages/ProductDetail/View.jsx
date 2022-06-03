@@ -2,17 +2,19 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types';
 
-import { BreadCrumb, Loading } from '../../components'
+import { BreadCrumb, Error, Loading } from '../../components'
 import { formatCurrency } from '../../utils'
 
 import styles from './styles.module.scss'
 
-export const View = ({ categories, loading, item }) => {
+export const View = ({ categories, loading, item, error }) => {
   return (
     <>
-      {loading && <Loading />}
+      {loading && !error && <Loading />}
 
-      {!loading &&
+      {!loading && error && <Error />}
+
+      {!loading && !error && Object.keys(item).length > 0 &&
         <>
           <Helmet>
             <meta charSet='utf-8' />
@@ -58,5 +60,6 @@ export const View = ({ categories, loading, item }) => {
 View.propTypes = {
   categories: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
+  error: PropTypes.any
 }

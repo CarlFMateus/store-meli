@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom'
 import { getItem } from '../../services'
 import { View } from './View'
 
-const initialState = { data: null, loading: true, error: null }
+const initialState = { data: {}, loading: true, error: null }
 
 export const ProductDetail = () => {
-  const [{ data, loading }, setInfo] = useState(initialState)
+  const [{ data, loading, error }, setInfo] = useState(initialState)
   const [categories, setCategories] = useState([])
   const { id } = useParams()
 
@@ -15,7 +15,6 @@ export const ProductDetail = () => {
     const consumeService = async () => {
       try {
         const data = await getItem(id)
-
         setCategories([ data.item.id, data.item.title ])
         setInfo({
           data: data.item,
@@ -23,11 +22,10 @@ export const ProductDetail = () => {
           error: null
         })
       } catch (error) {
-        console.error('ERROR', error)
         setInfo({
-          data: null,
+          data: {},
           loading: false,
-          error: null
+          error,
         })
       }
     }
@@ -40,6 +38,7 @@ export const ProductDetail = () => {
       item={data} 
       loading={loading} 
       categories={categories} 
+      error={error}
     />
   )
 }

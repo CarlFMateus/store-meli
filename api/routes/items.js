@@ -9,19 +9,22 @@ const router = Router()
 router.get('/', async (req, res, next) => {
   try {
     const { q } = req.query
+    const query = encodeURI(q)
 
-    const data = await getItems(q)
+    const data = await getItems(query)
   
     const items = data.results.splice(0, 4)
 
+    const isValidQuery = q && q !== 'null' && q !== 'undefined' 
+
     const categories = data.filters.length > 0
       ? data.filters[0].values[0].path_from_root.map((item) => item.name)
-      : q ? [q] : []
+      : isValidQuery ? [q] : []
 
     const dataToSend = {
       author: AUTHOR,
       categories,
-      items: items.map((item) => ({
+      items: isValidQuery ? items.map((item) => ({
         id: item.id,
         title: item.title,
         price: {
@@ -35,7 +38,7 @@ router.get('/', async (req, res, next) => {
         address: {
           state: item.address.state_name
         }
-      }))
+      })) : []
     }
 
     return res.status(200).json(dataToSend)

@@ -9,13 +9,13 @@ export const BreadCrumb = ({ categories }) => {
       {categories.length > 0 && (
         <div className={styles.breadcrumb}>
           Inicio {categories.map((item, index) => (
-            <>
-              {' > '} 
-              <span 
-                className={index === categories.length - 1 ? styles.active : '' }>
+            <span key={`${item}_${index}`}>
+              {' > '}
+              <span
+                className={index === categories.length - 1 ? styles.active : ''}>
                 {item}
               </span>
-            </>
+            </span>
           ))}
         </div>
       )}

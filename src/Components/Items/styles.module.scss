@@ -10,9 +10,8 @@
   color: $black;
 }
 
-.containerItems .cardItem {
+.containerItems .cardItem, .notFound {
   display: flex;
-  // border-bottom: 1px solid $gray-1;
   padding: 10px;
 }
 
@@ -46,8 +45,11 @@
   font-size: 18px;
 }
 
-
 .containerItems .cardItem .addressState {
   font-size: 12px;
   color: $gray-2;
+}
+
+.notFound {
+  justify-content: center;
 }

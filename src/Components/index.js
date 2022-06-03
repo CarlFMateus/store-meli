@@ -1,4 +1,5 @@
 import { BreadCrumb } from './BreadCrumb';
+import { Error } from './Error';
 import { Header } from './Header';
 import { Items } from './Items';
 import { Layout } from './Layout';
@@ -9,5 +10,6 @@ export {
   Layout,
   BreadCrumb,
   Items,
-  Loading
+  Loading,
+  Error
 }

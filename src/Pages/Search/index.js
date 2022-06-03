@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 import { getItems } from '../../services'
 import { View } from './View'
 
-const initialState = { data: null, loading: true, error: null }
+const initialState = { data: [], loading: true, error: null }
 
 export const Search = () => {
   const [params] = useSearchParams()
@@ -26,7 +26,7 @@ export const Search = () => {
       } catch (error) {
         console.error('ERROR', error)
         setInfo({
-          data: null,
+          data: [],
           loading: false,
           error: null
         })
