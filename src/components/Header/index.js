@@ -13,6 +13,8 @@ export const Header = () => {
     const searchParam = params.get(routes.params.search)
     if (searchParam) {
       setInputSearch(searchParam)
+    } else {
+      setInputSearch('')
     }
   }, [params])
 

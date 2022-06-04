@@ -29,7 +29,7 @@ router.get('/', async (req, res, next) => {
         title: item.title,
         price: {
           currency: item.prices.prices[0].currency_id,
-          amount: item.prices.prices[0].amount,
+          amount: item.price,
           decimals: item.prices[0]?.decimals || 0, // TODO: No se encuentra en la documentación
         },
         picture: item.thumbnail,
